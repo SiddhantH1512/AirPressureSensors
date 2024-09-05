@@ -1,6 +1,6 @@
 import logging
 import sys
-import datetime
+from datetime import datetime
 
 
 LOG_FILE_NAME = f"{datetime.datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
