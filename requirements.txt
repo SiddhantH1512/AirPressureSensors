@@ -11,4 +11,5 @@ imblearn
 joblib
 miceforest
 scikit-optimize
+python-dotenv
 -e .
