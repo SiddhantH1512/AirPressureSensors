@@ -163,3 +163,4 @@ cython_debug/
 myvenv/myvenv/
 myvenv/
 .DS_Store/
+Data/

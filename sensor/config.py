@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 import os
 import pymongo
+import certifi
 
 @dataclass
 class Env:
@@ -9,4 +10,4 @@ class Env:
 
 env_variable = Env()
 
-mongo_client = pymongo.MongoClient(env_variable.mongo_db_url)
+mongo_client = pymongo.MongoClient(env_variable.mongo_db_url, tlsCAFile=certifi.where())
