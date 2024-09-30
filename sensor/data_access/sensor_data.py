@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import json
+import os,sys
 from sensor.configuration.mongo_db_connection import MongoClient
 from sensor.constant.database import DATABASE_NAME
 from sensor.exception import SensorException
@@ -13,7 +14,7 @@ class SensorData:
         except Exception as e:
             raise SensorException(e, sys)
 
-    def save_csv_file(self,file_path ,collection_name: str, database_name: Optional[str] = None):
+    def save_csv_file(self,file_path ,collection_name: str, database_name: str = None):
         try:
             data_frame=pd.read_csv(file_path)
             data_frame.reset_index(drop=True, inplace=True)
@@ -28,7 +29,7 @@ class SensorData:
             raise SensorException(e, sys)
 
 
-    def export_collection_as_dataframe(self, collection_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
+    def export_collection_as_dataframe(self, collection_name: str, database_name: str = None) -> pd.DataFrame:
         try:
             if database_name is None:
                 collection = self.mongo_client.database[collection_name]

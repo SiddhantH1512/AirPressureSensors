@@ -1,6 +1,7 @@
 from sensor.exception import SensorException
 from sensor.logger import logging
 import pandas as pd 
+import os,sys
 from sensor.entity.config_entity import data_ingestion_config
 from sensor.entity.artefacts import DataIngestionArtifact
 from sensor.data_access.sensor_data import SensorData
@@ -34,7 +35,7 @@ class DataIngestion:
         except  Exception as e:
             raise  SensorException(e,sys)
 
-    def split_data_as_train_test(self, dataframe: DataFrame):
+    def split_data_as_train_test(self, dataframe: pd.DataFrame):
         try:
             train_set, test_set = train_test_split(dataframe, test_size=self.data_ingestion_config.train_test_split_ratio)
 
@@ -56,7 +57,7 @@ class DataIngestion:
     
     def initiate_data_ingestion(self):
         try:
-            dataframe = self.export_data_into_feature_store()
+            dataframe = self.export_data_to_feature_store()
 
             self.split_data_as_train_test(dataframe=dataframe)
 
