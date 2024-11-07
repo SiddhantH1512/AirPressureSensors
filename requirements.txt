@@ -12,4 +12,5 @@ joblib
 miceforest
 scikit-optimize
 python-dotenv
+fastapi
 -e .
